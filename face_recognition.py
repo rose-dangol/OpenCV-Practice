@@ -13,7 +13,7 @@ face_recognizer.read('face_trained.yml')
 img = cv.imread(r'C:\Users\rosedangol\Documents\FaceRecognition_Practice\OpenCV-Practice\faces\Taylor_Swift/Taylor_Swift5.jpg')
 
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-cv.imshow('Person', gray)
+# cv.imshow('Person', gray)
 
 # Detect the face in the image
 faces_rect = haar_cascade.detectMultiScale(gray, 1.1, 4)
