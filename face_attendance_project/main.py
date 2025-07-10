@@ -1,9 +1,13 @@
 import cv2
 from recognize import recognize_face
 
+def distance_to_accuracy(dist, scale=2.0):
+    acc = max(0, 100 - dist * scale)
+    return round(acc, 2)
+
 def main():
     cap = cv2.VideoCapture(0)
-    print("press 'q' to quit.")
+    print("🔵 Press 'q' to quit.")
 
     while True:
         ret, frame = cap.read()
@@ -14,8 +18,9 @@ def main():
         face = cv2.resize(gray, (64, 64))
 
         name, dist = recognize_face(face)
+        accuracy = distance_to_accuracy(dist)
 
-        cv2.putText(frame, f"{name} ({dist:.2f})", (20, 30),
+        cv2.putText(frame, f"{name} ({accuracy}%)", (20, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow("Face Attendance", frame)
 
