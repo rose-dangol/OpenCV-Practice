@@ -3,7 +3,7 @@ from recognize import recognize_face
 
 def main():
     cap = cv2.VideoCapture(0)
-    print("🔵 Press 'q' to quit.")
+    print("press 'q' to quit.")
 
     while True:
         ret, frame = cap.read()
